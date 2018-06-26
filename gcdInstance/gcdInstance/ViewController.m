@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TYGCDInstanceViewController.h"
+#import "TYRunViewController.h"
 
 @interface ViewController ()
 
@@ -29,6 +30,11 @@
     [but addTarget:self action:@selector(selectorBut) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but];
     
+    UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but1.frame = CGRectMake(120, 64, 100, 30);
+    but1.backgroundColor = [UIColor yellowColor];
+    [but1 setTitle:@"跳转2" forState:UIControlStateNormal];
+    [but1 addTarget:self action:@selector(selector) forControlEvents:<#(UIControlEvents)#>]
 }
 
 - (void)selectorBut {
