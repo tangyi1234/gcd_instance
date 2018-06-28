@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A29EC4AF20E4C2F90000068F /* TYThreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EC4AE20E4C2F90000068F /* TYThreadViewController.m */; };
+		A29EC4B220E4C7D20000068F /* TYNSThreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EC4B120E4C7D20000068F /* TYNSThreadViewController.m */; };
 		A2C06F7420E2279100956C38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F7320E2279100956C38 /* AppDelegate.m */; };
 		A2C06F7720E2279100956C38 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F7620E2279100956C38 /* ViewController.m */; };
 		A2C06F7D20E2279100956C38 /* gcdInstance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F7B20E2279100956C38 /* gcdInstance.xcdatamodeld */; };
@@ -14,10 +16,13 @@
 		A2C06F8220E2279100956C38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C06F8020E2279100956C38 /* LaunchScreen.storyboard */; };
 		A2C06F8520E2279100956C38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F8420E2279100956C38 /* main.m */; };
 		A2C06F8D20E22FAC00956C38 /* TYGCDInstanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F8C20E22FAC00956C38 /* TYGCDInstanceViewController.m */; };
-		A2C06F9020E24EF800956C38 /* TYRunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F8F20E24EF800956C38 /* TYRunViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A29EC4AD20E4C2F90000068F /* TYThreadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYThreadViewController.h; sourceTree = "<group>"; };
+		A29EC4AE20E4C2F90000068F /* TYThreadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYThreadViewController.m; sourceTree = "<group>"; };
+		A29EC4B020E4C7D20000068F /* TYNSThreadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYNSThreadViewController.h; sourceTree = "<group>"; };
+		A29EC4B120E4C7D20000068F /* TYNSThreadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYNSThreadViewController.m; sourceTree = "<group>"; };
 		A2C06F6F20E2279100956C38 /* gcdInstance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gcdInstance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C06F7220E2279100956C38 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2C06F7320E2279100956C38 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -30,8 +35,6 @@
 		A2C06F8420E2279100956C38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2C06F8B20E22FAC00956C38 /* TYGCDInstanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYGCDInstanceViewController.h; sourceTree = "<group>"; };
 		A2C06F8C20E22FAC00956C38 /* TYGCDInstanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYGCDInstanceViewController.m; sourceTree = "<group>"; };
-		A2C06F8E20E24EF800956C38 /* TYRunViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYRunViewController.h; sourceTree = "<group>"; };
-		A2C06F8F20E24EF800956C38 /* TYRunViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYRunViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +73,10 @@
 				A2C06F7620E2279100956C38 /* ViewController.m */,
 				A2C06F8B20E22FAC00956C38 /* TYGCDInstanceViewController.h */,
 				A2C06F8C20E22FAC00956C38 /* TYGCDInstanceViewController.m */,
-				A2C06F8E20E24EF800956C38 /* TYRunViewController.h */,
-				A2C06F8F20E24EF800956C38 /* TYRunViewController.m */,
+				A29EC4AD20E4C2F90000068F /* TYThreadViewController.h */,
+				A29EC4AE20E4C2F90000068F /* TYThreadViewController.m */,
+				A29EC4B020E4C7D20000068F /* TYNSThreadViewController.h */,
+				A29EC4B120E4C7D20000068F /* TYNSThreadViewController.m */,
 				A2C06F7E20E2279100956C38 /* Assets.xcassets */,
 				A2C06F8020E2279100956C38 /* LaunchScreen.storyboard */,
 				A2C06F8320E2279100956C38 /* Info.plist */,
@@ -155,8 +160,9 @@
 				A2C06F7720E2279100956C38 /* ViewController.m in Sources */,
 				A2C06F7D20E2279100956C38 /* gcdInstance.xcdatamodeld in Sources */,
 				A2C06F8520E2279100956C38 /* main.m in Sources */,
+				A29EC4B220E4C7D20000068F /* TYNSThreadViewController.m in Sources */,
 				A2C06F7420E2279100956C38 /* AppDelegate.m in Sources */,
-				A2C06F9020E24EF800956C38 /* TYRunViewController.m in Sources */,
+				A29EC4AF20E4C2F90000068F /* TYThreadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "TYGCDInstanceViewController.h"
-#import "TYRunViewController.h"
+#import "TYThreadViewController.h"
 
 @interface ViewController ()
 
@@ -34,11 +34,17 @@
     but1.frame = CGRectMake(120, 64, 100, 30);
     but1.backgroundColor = [UIColor yellowColor];
     [but1 setTitle:@"跳转2" forState:UIControlStateNormal];
-    [but1 addTarget:self action:@selector(selector) forControlEvents:<#(UIControlEvents)#>]
+    [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but1];
 }
 
 - (void)selectorBut {
     TYGCDInstanceViewController *vc = [[TYGCDInstanceViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)selectorBut1 {
+    TYThreadViewController *vc = [[TYThreadViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
