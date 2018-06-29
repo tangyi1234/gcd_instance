@@ -8,6 +8,7 @@
 
 #import "TYThreadViewController.h"
 #import "TYNSThreadViewController.h"
+#import "TYOperationViewController.h"
 
 #define w [UIScreen mainScreen].bounds.size.width
 #define h [UIScreen mainScreen].bounds.size.height
@@ -55,7 +56,8 @@
         TYNSThreadViewController *vc = [[TYNSThreadViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }else {
-        
+        TYOperationViewController *vc = [[TYOperationViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

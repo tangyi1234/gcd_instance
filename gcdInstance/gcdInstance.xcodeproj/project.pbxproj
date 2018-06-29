@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A29EC4AF20E4C2F90000068F /* TYThreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EC4AE20E4C2F90000068F /* TYThreadViewController.m */; };
 		A29EC4B220E4C7D20000068F /* TYNSThreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EC4B120E4C7D20000068F /* TYNSThreadViewController.m */; };
+		A2B13E6B20E6097B00AA4BFD /* TYOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B13E6A20E6097B00AA4BFD /* TYOperationViewController.m */; };
+		A2B13E6E20E624EC00AA4BFD /* TYOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B13E6D20E624EC00AA4BFD /* TYOperation.m */; };
 		A2C06F7420E2279100956C38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F7320E2279100956C38 /* AppDelegate.m */; };
 		A2C06F7720E2279100956C38 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F7620E2279100956C38 /* ViewController.m */; };
 		A2C06F7D20E2279100956C38 /* gcdInstance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2C06F7B20E2279100956C38 /* gcdInstance.xcdatamodeld */; };
@@ -23,6 +25,10 @@
 		A29EC4AE20E4C2F90000068F /* TYThreadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYThreadViewController.m; sourceTree = "<group>"; };
 		A29EC4B020E4C7D20000068F /* TYNSThreadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYNSThreadViewController.h; sourceTree = "<group>"; };
 		A29EC4B120E4C7D20000068F /* TYNSThreadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYNSThreadViewController.m; sourceTree = "<group>"; };
+		A2B13E6920E6097B00AA4BFD /* TYOperationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYOperationViewController.h; sourceTree = "<group>"; };
+		A2B13E6A20E6097B00AA4BFD /* TYOperationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYOperationViewController.m; sourceTree = "<group>"; };
+		A2B13E6C20E624EC00AA4BFD /* TYOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYOperation.h; sourceTree = "<group>"; };
+		A2B13E6D20E624EC00AA4BFD /* TYOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYOperation.m; sourceTree = "<group>"; };
 		A2C06F6F20E2279100956C38 /* gcdInstance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gcdInstance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C06F7220E2279100956C38 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2C06F7320E2279100956C38 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -77,6 +83,10 @@
 				A29EC4AE20E4C2F90000068F /* TYThreadViewController.m */,
 				A29EC4B020E4C7D20000068F /* TYNSThreadViewController.h */,
 				A29EC4B120E4C7D20000068F /* TYNSThreadViewController.m */,
+				A2B13E6920E6097B00AA4BFD /* TYOperationViewController.h */,
+				A2B13E6A20E6097B00AA4BFD /* TYOperationViewController.m */,
+				A2B13E6C20E624EC00AA4BFD /* TYOperation.h */,
+				A2B13E6D20E624EC00AA4BFD /* TYOperation.m */,
 				A2C06F7E20E2279100956C38 /* Assets.xcassets */,
 				A2C06F8020E2279100956C38 /* LaunchScreen.storyboard */,
 				A2C06F8320E2279100956C38 /* Info.plist */,
@@ -157,8 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2C06F8D20E22FAC00956C38 /* TYGCDInstanceViewController.m in Sources */,
+				A2B13E6E20E624EC00AA4BFD /* TYOperation.m in Sources */,
 				A2C06F7720E2279100956C38 /* ViewController.m in Sources */,
 				A2C06F7D20E2279100956C38 /* gcdInstance.xcdatamodeld in Sources */,
+				A2B13E6B20E6097B00AA4BFD /* TYOperationViewController.m in Sources */,
 				A2C06F8520E2279100956C38 /* main.m in Sources */,
 				A29EC4B220E4C7D20000068F /* TYNSThreadViewController.m in Sources */,
 				A2C06F7420E2279100956C38 /* AppDelegate.m in Sources */,
