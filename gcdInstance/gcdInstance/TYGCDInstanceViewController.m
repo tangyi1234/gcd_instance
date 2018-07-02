@@ -27,6 +27,15 @@
     [but setTitle:@"加载" forState:UIControlStateNormal];
     [but addTarget:self action:@selector(selectorBut) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but];
+    
+    UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but1.frame = CGRectMake(10, 100, 100, 30);
+    but1.backgroundColor = [UIColor redColor];
+    [but1 setTitle:@"主线程执行" forState:UIControlStateNormal];
+    [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but1];
+    
+    
 }
 
 - (void)selectorBut {
@@ -63,6 +72,14 @@
 //    dispatch_async(queues, ^{
 //        NSLog(@"异步并行队列2:%@",[NSThread currentThread]);
 //    });
+}
+
+- (void)selectorBut1 {
+    NSLog(@"当前线程:%@",[NSThread currentThread]);
+    
+    //主队列
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    
 }
 
 - (void)didReceiveMemoryWarning {
