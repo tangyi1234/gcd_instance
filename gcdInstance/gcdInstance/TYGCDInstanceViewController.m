@@ -9,7 +9,8 @@
 #import "TYGCDInstanceViewController.h"
 
 @interface TYGCDInstanceViewController ()
-
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
+@property (nonatomic, assign) int votes;
 @end
 
 @implementation TYGCDInstanceViewController
@@ -76,6 +77,13 @@
     [but7 setTitle:@"信号量同步" forState:UIControlStateNormal];
     [but7 addTarget:self action:@selector(selectorBut7) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but7];
+    
+    UIButton *but8 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but8.frame = CGRectMake(10, 340, 150, 30);
+    but8.backgroundColor = [UIColor greenColor];
+    [but8 setTitle:@"线程安全" forState:UIControlStateNormal];
+    [but8 addTarget:self action:@selector(selectorBut8) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but8];
 }
 
 - (void)selectorBut {
@@ -169,7 +177,9 @@
 - (void)selectorBut3 {
     NSLog(@"打印当前线程:%@",[NSThread currentThread]);
     
-    dispatch_queue_t queue = dispatch_queue_create("myQueue", DISPATCH_QUEUE_CONCURRENT);
+//    dispatch_queue_t queue = dispatch_queue_create("myQueue", DISPATCH_QUEUE_CONCURRENT);
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
     dispatch_async(queue, ^{
         for (int i = 1; i < 2; i++) {
@@ -185,12 +195,12 @@
         }
     });
     
-//    dispatch_barrier_async(queue, ^{
-//        for (int i = 1; i < 2; i++) {
-//            [NSThread sleepForTimeInterval:2];
-//            NSLog(@"barrier ----:%@",[NSThread currentThread]);
-//        }
-//    });
+    dispatch_barrier_async(queue, ^{
+        for (int i = 1; i < 2; i++) {
+            [NSThread sleepForTimeInterval:2];
+            NSLog(@"barrier ----:%@",[NSThread currentThread]);
+        }
+    });
     
     dispatch_async(queue, ^{
         for (int i = 1; i < 2; i++) {
@@ -321,7 +331,68 @@
     NSLog(@"结束执行:%d",number);
     /*
      通过信号量来控制方法的执行顺序
+     
+     Dispatch Semaphore 提供了三个函数。
+     
+     dispatch_semaphore_create：创建一个Semaphore并初始化信号的总量
+     dispatch_semaphore_signal：发送一个信号，让信号总量加1
+     dispatch_semaphore_wait：可以使总信号量减1，当信号总量为0时就会一直等待（阻塞所在线程），否则就可以正常执行。
+     
+     注意：信号量的使用前提是：想清楚你需要处理哪个线程等待（阻塞），又要哪个线程继续执行，然后使用信号量。
      */
+}
+
+- (void)selectorBut8{
+    /*
+     线程安全：如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。
+     
+     若每个线程中对全局变量、静态变量只有读操作，而无写操作，一般来说，这个全局变量是线程安全的；若有多个线程同时执行写操作（更改变量），一般都需要考虑线程同步，否则的话就可能影响线程安全。
+     
+     线程同步：可理解为线程 A 和 线程 B 一块配合，A 执行到一定程度时要依靠线程 B 的某个结果，于是停下来，示意 B 运行；B 依言执行，再将结果给 A；A 再继续操作。
+     
+     举个简单例子就是：两个人在一起聊天。两个人不能同时说话，避免听不清(操作冲突)。等一个人说完(一个线程结束操作)，另一个再说(另一个线程再开始操作)。
+     */
+    NSLog(@"打印当前线程:%@",[NSThread currentThread]);
+    NSLog(@"开始执行");
+    
+    dispatch_queue_t queue = dispatch_queue_create("myQueue1",  DISPATCH_QUEUE_SERIAL);
+    
+    dispatch_queue_t queue1 = dispatch_queue_create("myQueue2", DISPATCH_QUEUE_SERIAL);
+    //信号量
+    _semaphore = dispatch_semaphore_create(1);
+    //总票数
+    self.votes = 50;
+    
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(queue, ^{
+        [weakSelf ticketWindow];
+    });
+    
+    dispatch_async(queue1, ^{
+        [weakSelf ticketWindow];
+    });
+}
+
+- (void)ticketWindow{
+    while (1) {
+        /*
+         可以使总信号量减1，当信号总量为0时就会一直等待（阻塞所在线程）。这句话的意思是，这个方法会操作信号总量会减一。但要满足操作这个方法必须就要满足总量不为0，如果为0就不会进行操作租塞在这里。在这里用做线程安全操作还因为，它如果租塞就会将(所有的线程都租塞了)。
+         */
+        dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+        
+        if (self.votes > 0) {
+            self.votes --;
+            NSLog(@"%@", [NSString stringWithFormat:@"剩余票数：%d 窗口：%@", self.votes, [NSThread currentThread]]);
+            [NSThread sleepForTimeInterval:0.2];
+        }else{
+            NSLog(@"售票完毕");
+            dispatch_semaphore_signal(_semaphore);
+            break;
+        }
+
+            dispatch_semaphore_signal(_semaphore);
+
+    }
 }
 
 - (void)didReceiveMemoryWarning {
